@@ -5,7 +5,7 @@
     "module": "ESNext", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
     "moduleResolution": "node",
     "rootDir": "./", /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
-    "outDir": "./out", /* Redirect output structure to the directory. */
+    "outDir": "./build", /* Redirect output structure to the directory. */
     // "noEmit": true,                        /* Do not emit outputs. */
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     /* Strict Type-Checking Options */
