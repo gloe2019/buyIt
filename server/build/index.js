@@ -11,8 +11,11 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true })); //parse URL-encoded bodies
 app.use(express.json()); //parse JSON bodies
 //connect to MongoDB
-mongoose.connect(`${process.env.MONGODB_URI}`).then((res) => {
+mongoose.connect(`${process.env.MONGODB_URI}`)
+    .then((res) => {
     console.log(`Connected to Mongo Db:`, process.env.DB_NAME);
+}).catch(err => {
+    console.error('MongoDb connection error:', err);
 });
 app.listen(PORT, () => {
     console.log(`BuyIt Server running on port: ${PORT}`);

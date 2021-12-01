@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf build/ && tsc",
+    "start": "nodemon build/index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "mongoose": "^6.0.14",
     "morgan": "^1.10.0"
   },
+  "type": "module",
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/dotenv": "^8.2.0",
