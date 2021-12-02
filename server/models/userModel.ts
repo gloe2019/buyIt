@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 // 1. Create an interface representing a document in MongoDB.
 interface User {
   firstName: string;
@@ -13,14 +13,15 @@ interface User {
 }
 
 // 2. Create a Schema corresponding to the document interface.
-const userSchema: mongoose.Schema = new Schema<User>({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  email: { type: String, required: true },
-  password: { type: String, required: true },
-  isAdmin: { type: Boolean, required: true },
-},
+const UserSchema: mongoose.Schema = new Schema<User>(
+  {
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true },
+    isAdmin: { type: Boolean, required: true },
+  },
   { timestamps: true }
 );
 
-export default mongoose.model<User>('User', userSchema)
+export default mongoose.model<User>("User", UserSchema);
