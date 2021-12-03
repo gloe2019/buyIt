@@ -1,6 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import { Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
 import routes from "./config/routes";
 import useData from "./hooks/useData";
 

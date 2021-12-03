@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import IUser from "../interfaces/user";
 
 const useData = () => {
@@ -13,7 +12,6 @@ const useData = () => {
     axios
       .post("http://localhost:7000/api/users/register", userObj)
       .then((res) => console.log(res.data));
-    // navigate("/login");
   };
 
   const login = (userObj: {}) => {
@@ -24,8 +22,6 @@ const useData = () => {
 
       localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("token", res.data.token);
-
-      // navigate("/");
     });
   };
   return {
