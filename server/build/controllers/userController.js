@@ -40,6 +40,38 @@ const register = (req, res) => {
         });
     });
 };
+const registerAdmin = (req, res) => {
+    const { firstName, lastName, email, password } = req.body;
+    bcrypt.hash(password, 10, (err, hash) => {
+        if (err) {
+            return res.status(500).json({
+                message: err.message,
+                error: err,
+            });
+        }
+        //Insert user into DB here...
+        const newUser = new userModel({
+            firstName,
+            lastName,
+            email,
+            password: hash,
+            isAdmin: true,
+        });
+        return newUser
+            .save()
+            .then((user) => {
+            return res.status(201).json({
+                user,
+            });
+        })
+            .catch((err) => {
+            return res.status(500).json({
+                message: err.message,
+                error: err,
+            });
+        });
+    });
+};
 const login = (req, res, next) => {
     const { email, password } = req.body;
     userModel
@@ -155,6 +187,7 @@ const getAllUsers = (req, res, next) => {
 export default {
     validateToken,
     register,
+    registerAdmin,
     getAllUsers,
     login,
 };
