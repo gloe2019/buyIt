@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import IUser from "../interfaces/user";
 import Page from "../interfaces/page";
 import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
@@ -16,9 +15,20 @@ import LockOpen from '@mui/icons-material/LockOpen';
 
 const Login: React.FunctionComponent<Page> = (props) => {
   console.log('>>login props', props)
+  // const { login, user, token } = props.properties
   let login = props.properties.login;
-
   const navigate = useNavigate()
+  useEffect(() => {
+    console.log(`Loading ${props.name}`)
+    let _user = localStorage.getItem('user')
+    let _token = localStorage.getItem('token')
+
+    if (_user && _token) {
+      console.log('User already logged in, navigating to homepage!')
+      navigate('/')
+    }
+  })
+
 
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,9 +44,7 @@ const Login: React.FunctionComponent<Page> = (props) => {
   }
 
 
-  useEffect(() => {
-    console.log(`Loading ${props.name}`)
-  })
+
   return (
 
     <Container maxWidth="sm">
@@ -95,5 +103,7 @@ const Login: React.FunctionComponent<Page> = (props) => {
     </Container>
   )
 }
+
+
 
 export default Login
