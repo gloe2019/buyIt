@@ -1,4 +1,4 @@
-import { Container, Box, Grid, Card } from "@mui/material"
+import { Container, Box, Grid } from "@mui/material"
 import Page from "../interfaces/page"
 import Product from "./Product"
 
