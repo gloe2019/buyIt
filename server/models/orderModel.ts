@@ -2,7 +2,12 @@ import mongoose, { Schema } from "mongoose";
 
 interface Order {
   userId: string;
-  items: { productId: string; name: string; quantity: number; price: number }[];
+  items: {
+    productId: string;
+    name: string;
+    quantity: number;
+    price: number;
+  }[];
   total: number;
   dateAdded: Date;
 }
