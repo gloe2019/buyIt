@@ -12,8 +12,13 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box'
 import PersonAddAlt from '@mui/icons-material/PersonAddAlt';
 
-const Register: React.FunctionComponent<Page> = props => {
-  let register = props.properties.register
+interface registerProps {
+  name: string
+  function: Function
+}
+
+const Register = (props: registerProps) => {
+  let register = props.function
 
   const navigate = useNavigate()
 
@@ -29,7 +34,10 @@ const Register: React.FunctionComponent<Page> = props => {
 
     }
     console.log(newUserObj)
-    register(newUserObj)
+    if (register) {
+
+      register(newUserObj)
+    }
     navigate('/login')
   }
 

@@ -15,19 +15,19 @@ import LockOpen from '@mui/icons-material/LockOpen';
 
 const Login: React.FunctionComponent<Page> = (props) => {
   console.log('>>login props', props)
-  // const { login, user, token } = props.properties
-  let login = props.properties.login;
+  const state = props.state
+  const login = props.function;
   const navigate = useNavigate()
   useEffect(() => {
     console.log(`Loading ${props.name}`)
-    let _user = localStorage.getItem('user')
-    let _token = localStorage.getItem('token')
-
-    if (_user && _token) {
-      console.log('User already logged in, navigating to homepage!')
-      navigate('/')
+    if (state) {
+      if (state.user && state.token) {
+        console.log('User already logged in, navigating to homepage!')
+        console.log(state.user, state.token)
+        navigate('/')
+      }
     }
-  })
+  }, [ state, navigate, props.name ])
 
 
 
@@ -39,7 +39,10 @@ const Login: React.FunctionComponent<Page> = (props) => {
       password: data.get('password')
     }
     console.log(userCredentials)
-    login(userCredentials)
+    if (login) {
+      login(userCredentials)
+
+    }
     navigate('/')
   }
 
