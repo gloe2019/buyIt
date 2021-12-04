@@ -4,6 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { usersRouter } from "./routes/userRoutes.js";
 import config from "./config/config.js";
+import { productsRouter } from "./routes/productRoutes.js";
 const PORT = Number(config.server.port);
 const app = express();
 app.use(cors());
@@ -21,6 +22,7 @@ mongoose
 });
 //Setup Routes
 app.use("/api/users", usersRouter);
+app.use("/api/products", productsRouter);
 app.listen(PORT, () => {
     console.log(`BuyIt Server running on port: ${PORT}`);
 });

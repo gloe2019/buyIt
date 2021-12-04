@@ -83,7 +83,7 @@ const login = (req, res, next) => {
         bcrypt.compare(password, user.password, (err, result) => {
             if (err) {
                 return res.status(401).json({
-                    message: "Unauthorized! --bcrypterr",
+                    message: "Unauthorized! (Incorrect password)",
                 });
             }
             else if (result) {
@@ -98,7 +98,12 @@ const login = (req, res, next) => {
                         return res.status(200).json({
                             message: "Authorization successful!",
                             token,
-                            user,
+                            user: {
+                                id: user._id,
+                                email: user.email,
+                                firstName: user.firstName,
+                                lastName: user.lastName,
+                            },
                         });
                     }
                 });
