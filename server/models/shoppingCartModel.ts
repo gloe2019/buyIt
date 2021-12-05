@@ -1,12 +1,13 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
+const Schema = mongoose.Schema;
 interface ShoppingCart {
   userId: string;
   items: { productId: string; name: string; quantity: number; price: number }[];
   total: number;
 }
 
-const ShoppingCartSchema: Schema = new Schema<ShoppingCart>({
+const ShoppingCartSchema: mongoose.Schema = new Schema<ShoppingCart>({
   userId: {
     type: String,
     required: true,
