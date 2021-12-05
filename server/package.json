@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf build/ && tsc",
-    "start": "nodemon build/index.js"
+    "start": "nodemon build/index.js",
+    "postinstall": "tsc",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
+  },
+  "engines": {
+    "node": "16.13.0"
   },
   "keywords": [],
   "author": "",
