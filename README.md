@@ -19,7 +19,7 @@ Example of a valid card:
 Card Number: 4242 4242 4242 4242
 MM/YY: any numeric values  greater than present date. Try 11/22
 CVC: any numeric values
-ZIP: any numeric values (edited) 
+ZIP: any numeric values
 ```
 - After entering valid card details, the user clicks the confirm order, their order is completed and they are returned to the main page. Their cart is also emptied out.
 
@@ -28,7 +28,7 @@ ZIP: any numeric values (edited)
 - The backend server was built using the **MVC (model-view-controller) fromework**, with React acting as the view. Models were created using mongoose, then controllers and routes were implemented for the models. 
 - The following models and associated controllers were created: `User`, `Product` `ShoppingCart`, `Order`
 #### Folder Structure
-- App logic was isolated in distinct folders show below. This was done intentionally to as it made development modular. I was ableo to work through from model->controller->view for each distinct model and add new files as necessary without affecting the rest of the application.
+- App logic was isolated in distinct folders show below. This was done intentionally to as it made development modular. I was able to work through from model->controller->view for each distinct model and add new files as necessary without affecting the rest of the application.
 ```
 BuyItServer
 │   tsconfig.json
@@ -46,7 +46,7 @@ BuyItServer
 
 #### Dependencies
 **Backend**
-- Node
+- Node (v16.13.0)
 - Express
 - TypeScript
 - MongoDB
@@ -76,11 +76,22 @@ BuyItServer
 ![Main Page](https://user-images.githubusercontent.com/46451257/144761005-e7c613e4-b4ba-4cb0-a8e1-fe3e0073dbfa.png)
 ### Login Page
 ![login_page](https://user-images.githubusercontent.com/46451257/144761508-0f5b778a-86b3-4677-b0a0-70f5dea960bd.png)
-### Shopping Cart
-![cart_with_items](https://user-images.githubusercontent.com/46451257/144761529-2b3973c4-a043-4a84-967b-8d07063cf81d.png)
 ### Registration Form
 ![Registration Form](https://user-images.githubusercontent.com/46451257/144761014-8ffdaa9b-e8aa-4566-a411-b7b1e42a0c24.png)
+### Shopping Cart
+![cart_with_items](https://user-images.githubusercontent.com/46451257/144761529-2b3973c4-a043-4a84-967b-8d07063cf81d.png)
 
+
+### Installation instructions
+1. Clone the server + client repos into separate folders:
+ ```
+ git clone https://github.com/gloe2019/buyItClient.git
+ git clone https://github.com/gloe2019/buyItServer.git
+ ```
+2. Install client + server dependencies
+`npm install`
+3. Start client and server
+`npm start`
 
 
 
