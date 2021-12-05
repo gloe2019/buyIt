@@ -1,4 +1,3 @@
-import About from "../components/About";
 import Home from "../components/Home";
 import Login from "../components/Login";
 import Register from "../components/Register";
@@ -11,12 +10,6 @@ const routes: IRoute[] = [
     path: "/",
     name: "Home Page",
     component: Home,
-    exact: true,
-  },
-  {
-    path: "/about",
-    name: "About Page",
-    component: About,
     exact: true,
   },
   {

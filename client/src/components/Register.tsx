@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 
-import Page from "../interfaces/page";
 import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
