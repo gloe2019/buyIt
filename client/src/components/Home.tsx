@@ -1,20 +1,17 @@
-import React, { useEffect } from "react";
-
+// import React, { useEffect } from "react";
 import Page from "../interfaces/page";
 import Navbar from "./Navbar";
 import Products from "./Products";
+import useData from "../hooks/useData";
 
 const Home: React.FunctionComponent<Page> = (props) => {
-  useEffect(() => {
-    console.log(`Loading ${props.name}`);
-    console.log(props)
-  }, []);
+
+  const { addToCart } = useData()
 
   return (
     <div>
-      <Navbar />
-      Home page
-      <Products name="Products" state={props.state} />
+      <Navbar state={props.state} logout={props.function} />
+      <Products name="Products" state={props.state} addToCart={addToCart} />
     </div>
   );
 };
