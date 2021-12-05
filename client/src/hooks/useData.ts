@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import IUser from "../interfaces/user";
 
 const useData = () => {
   // const [user, setUser] = useState<IUser | null>(null);
@@ -10,6 +9,7 @@ const useData = () => {
     user: "",
     token: "",
     products: [{}],
+    cart: {},
   });
 
   useEffect(() => {
@@ -43,9 +43,50 @@ const useData = () => {
       localStorage.setItem("token", res.data.token);
     });
   };
+
+  const logout = () => {
+    localStorage.clear();
+    setState((prev) => ({
+      ...prev,
+      user: "",
+      token: "",
+    }));
+  };
+
+  const addToCart = (productObj: {}) => {
+    let user = localStorage.getItem("user");
+    if (user) {
+      let parsedUser = JSON.parse(user);
+      let id = parsedUser.id;
+      console.log(productObj, id);
+      axios
+        .post(`http://localhost:7000/api/shoppingCart/${id}`, productObj)
+        .then((res) => {
+          console.log(res.data);
+        });
+    }
+  };
+
+  const getCart = () => {
+    let user = localStorage.getItem("user");
+    if (user) {
+      let parsedUser = JSON.parse(user);
+      let id = parsedUser.id;
+      axios.get(`http://localhost:7000/api/shoppingCart/${id}`).then((res) => {
+        console.log(res.data);
+        setState((prev) => ({
+          ...prev,
+          cart: res.data,
+        }));
+      });
+    }
+  };
   return {
     register,
     login,
+    logout,
+    addToCart,
+    getCart,
     state,
     setState,
   };
