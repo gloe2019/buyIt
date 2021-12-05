@@ -81,12 +81,30 @@ const useData = () => {
       });
     }
   };
+
+  const checkout = (source: {}) => {
+    let user = localStorage.getItem("user");
+    if (user) {
+      let parsedUser = JSON.parse(user);
+      let id = parsedUser.id;
+      axios
+        .post(`http://localhost:7000/api/order/${id}`, source)
+        .then((res) => {
+          console.log(res.data);
+          // setState((prev) => ({
+          //   ...prev,
+          //   cart: res.data,
+          // }));
+        });
+    }
+  };
   return {
     register,
     login,
     logout,
     addToCart,
     getCart,
+    checkout,
     state,
     setState,
   };

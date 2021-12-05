@@ -27,7 +27,7 @@ interface product {
 
 
 const Product = (props: product) => {
-  console.log('product props', props)
+  // console.log('product props', props)
   const state = props.state
   const addToCart = props.addToCart
   const navigate = useNavigate()
@@ -51,7 +51,7 @@ const Product = (props: product) => {
     }
   }
   const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason == 'click-out') {
+    if (reason === 'click-out') {
       return;
     }
     setOpen(false)

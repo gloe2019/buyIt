@@ -24,7 +24,7 @@ const Cart = (props: any) => {
   let total;
   let items = [];
   if (typeof cart === "object") {
-    console.log(cart, cart.total, cart.items)
+    // console.log(cart, cart.total, cart.items)
     total = cart.total.toFixed(2)
     items = cart.items
 

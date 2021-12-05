@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Cart from "./components/Cart";
-import Checkout from "./components/checkout/Checkout";
+import Checkout from "./components/Checkout";
 // Routing should be done from here --> connect to backend!
 
 const App = () => {
