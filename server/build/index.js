@@ -5,6 +5,7 @@ import morgan from "morgan";
 import { usersRouter } from "./routes/userRoutes.js";
 import config from "./config/config.js";
 import { productsRouter } from "./routes/productRoutes.js";
+import { shoppingCartRouter } from "./routes/shoppingCartRoutes.js";
 const PORT = Number(config.server.port);
 const app = express();
 app.use(cors());
@@ -23,6 +24,7 @@ mongoose
 //Setup Routes
 app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
+app.use("/api/shoppingCart", shoppingCartRouter);
 app.listen(PORT, () => {
     console.log(`BuyIt Server running on port: ${PORT}`);
 });
