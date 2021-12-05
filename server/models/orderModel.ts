@@ -1,5 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
+const Schema = mongoose.Schema;
 interface Order {
   userId: string;
   items: {
@@ -12,7 +13,7 @@ interface Order {
   dateAdded: Date;
 }
 
-const OrderSchema: Schema = new Schema<Order>({
+const OrderSchema: mongoose.Schema = new Schema<Order>({
   userId: {
     type: String,
     required: true,
