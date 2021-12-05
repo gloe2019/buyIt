@@ -13,7 +13,7 @@ const useData = () => {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:7000/api/products").then((res) => {
+    axios.get("https://ge-buyit.herokuapp.com/api/products").then((res) => {
       setState((prev) => ({
         ...prev,
         products: res.data,
@@ -25,23 +25,25 @@ const useData = () => {
 
   const register = (userObj: {}) => {
     axios
-      .post("http://localhost:7000/api/users/register", userObj)
+      .post("https://ge-buyit.herokuapp.com/api/users/register", userObj)
       .then((res) => console.log(res.data));
   };
 
   const login = (userObj: {}) => {
-    axios.post("http://localhost:7000/api/users/login", userObj).then((res) => {
-      console.log(res.data);
-      // setUser(res.data.user);
-      // setToken(res.data.token);
-      setState((prev) => ({
-        ...prev,
-        user: res.data.user,
-        token: res.data.token,
-      }));
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      localStorage.setItem("token", res.data.token);
-    });
+    axios
+      .post("https://ge-buyit.herokuapp.com/api/users/login", userObj)
+      .then((res) => {
+        console.log(res.data);
+        // setUser(res.data.user);
+        // setToken(res.data.token);
+        setState((prev) => ({
+          ...prev,
+          user: res.data.user,
+          token: res.data.token,
+        }));
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        localStorage.setItem("token", res.data.token);
+      });
   };
 
   const logout = () => {
@@ -60,7 +62,10 @@ const useData = () => {
       let id = parsedUser.id;
       console.log(productObj, id);
       axios
-        .post(`http://localhost:7000/api/shoppingCart/${id}`, productObj)
+        .post(
+          `https://ge-buyit.herokuapp.com/api/shoppingCart/${id}`,
+          productObj
+        )
         .then((res) => {
           console.log(res.data);
         });
@@ -72,13 +77,15 @@ const useData = () => {
     if (user) {
       let parsedUser = JSON.parse(user);
       let id = parsedUser.id;
-      axios.get(`http://localhost:7000/api/shoppingCart/${id}`).then((res) => {
-        console.log(res.data);
-        setState((prev) => ({
-          ...prev,
-          cart: res.data,
-        }));
-      });
+      axios
+        .get(`https://ge-buyit.herokuapp.com/api/shoppingCart/${id}`)
+        .then((res) => {
+          console.log(res.data);
+          setState((prev) => ({
+            ...prev,
+            cart: res.data,
+          }));
+        });
     }
   };
 
@@ -88,7 +95,7 @@ const useData = () => {
       let parsedUser = JSON.parse(user);
       let id = parsedUser.id;
       axios
-        .post(`http://localhost:7000/api/order/${id}`, source)
+        .post(`https://ge-buyit.herokuapp.com/api/order/${id}`, source)
         .then((res) => {
           console.log(res.data);
           // setState((prev) => ({
