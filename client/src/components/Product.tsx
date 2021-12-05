@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid'
 import CardActions from '@mui/material/CardActions';
@@ -7,8 +9,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import AddShoppingCart from '@mui/icons-material/AddShoppingCart';
-import IconButton from '@mui/material/IconButton'
 import Chip from "@mui/material/Chip"
+import Snackbar from '@mui/material/Snackbar';
 
 interface product {
   _id: string;
@@ -17,18 +19,45 @@ interface product {
   category: string;
   image: string;
   price: number;
-  quantity: number
+  quantity: number;
+  addToCart: Function;
+  state: any
 }
 
 
 
 const Product = (props: product) => {
+  console.log('product props', props)
+  const state = props.state
+  const addToCart = props.addToCart
+  const navigate = useNavigate()
+
+  const [ open, setOpen ] = useState(false)
 
   const handleClick = (event: React.MouseEvent) => {
-    console.log(event.target)
-    let product_id = event.currentTarget.id
+    // console.log(event.target)
+    if (state.user) {
+      let productId = event.currentTarget.id
+      let quantity = 1
+      let productObj = {
+        productId,
+        quantity
+      }
+      addToCart(productObj)
+      setOpen(true)
+    }
+    else {
+      navigate('/login')
+    }
   }
-  console.log(">>>product props", props)
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason == 'click-out') {
+      return;
+    }
+    setOpen(false)
+  }
+
+  // console.log(">>>product props", props)
   return (
     <Grid item>
 
@@ -58,7 +87,12 @@ const Product = (props: product) => {
           <Button variant="contained" id={props._id} onClick={handleClick} endIcon={<AddShoppingCart />} >
             Add to Cart
           </Button>
-
+          <Snackbar
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            message="Item added to cart"
+          />
         </CardActions>
       </Card>
     </Grid >
