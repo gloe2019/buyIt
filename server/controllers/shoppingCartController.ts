@@ -70,7 +70,32 @@ const getCart = async (req: Request, res: Response) => {
   }
 };
 
+const deleteItemFromCart = async (req: Request, res: Response) => {
+  const userId = req.params.id;
+  const productId = req.params.productId;
+  try {
+    let shoppingCart = await shoppingCartModel.findOne({ userId });
+    if (shoppingCart) {
+      let prodIndex = shoppingCart.items.findIndex(
+        (prod) => prod.productId == productId
+      );
+      if (prodIndex > -1) {
+        let product = shoppingCart.items[prodIndex];
+        shoppingCart.total -= product.quantity * product.price;
+        shoppingCart.items.splice(prodIndex, 1);
+      }
+      shoppingCart = await shoppingCart.save();
+    }
+    return res.status(200).json({ shoppingCart });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Error deleting item from cart", error: err });
+  }
+};
+
 export default {
   addItemToCart,
   getCart,
+  deleteItemFromCart,
 };
