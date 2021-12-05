@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import Page from "../interfaces/page";
+import Navbar from "./Navbar";
 import Products from "./Products";
 
 const Home: React.FunctionComponent<Page> = (props) => {
@@ -11,6 +12,7 @@ const Home: React.FunctionComponent<Page> = (props) => {
 
   return (
     <div>
+      <Navbar />
       Home page
       <Products name="Products" state={props.state} />
     </div>

@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import AddShoppingCart from '@mui/icons-material/AddShoppingCart';
 import IconButton from '@mui/material/IconButton'
-import Link from "@mui/material/Link"
+import Chip from "@mui/material/Chip"
 
 interface product {
   _id: string;
@@ -32,17 +32,19 @@ const Product = (props: product) => {
   return (
     <Grid item>
 
-      <Card sx={{ maxHeight: 400, maxWidth: 350 }}>
+      <Card sx={{ maxHeight: 500, maxWidth: 350 }}>
         <CardMedia
           component="img"
           alt={props.name}
-          height="150"
+          height="250"
           image={props.image}
+          sx={{ objectFit: 'contain' }}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {props.name}
           </Typography>
+          <Chip label={props.quantity} size="small" variant="outlined" />
           <Typography variant="subtitle1" component="div">
             ${props.price}
           </Typography>
