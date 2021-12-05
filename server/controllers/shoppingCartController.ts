@@ -36,7 +36,7 @@ const addItemToCart = async (req: Request, res: Response) => {
       );
       if (productIndex > -1) {
         let productItem = shoppingCart.items[productIndex];
-        productItem.quantity = quantity;
+        productItem.quantity += quantity;
         shoppingCart.items[productIndex] = productItem;
       } else {
         shoppingCart.items.push({
