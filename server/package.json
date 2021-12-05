@@ -7,7 +7,7 @@
     "build": "rm -rf build/ && tsc",
     "start": "nodemon build/index.js",
     "postinstall": "tsc",
-    "deploy": "git add . && git commit -m Heroku && git push heroku master"
+    "deploy": "git add . && git commit -m Heroku && git push heroku main"
   },
   "engines": {
     "node": "16.13.0"
